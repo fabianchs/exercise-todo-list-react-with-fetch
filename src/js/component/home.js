@@ -1,9 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 //create your first component
 //hooks son funciones que se extraen
 
 export function Home() {
+	useEffect(() => {
+		let url = "https://assets.breatheco.de/apis/fake/todos/user/fabianchss";
+
+		const getAll = async () => {
+			let res = await fetch(url);
+
+			if (res.status == 404) {
+				res = await fetch(url, {
+					method: "POST",
+					body: [],
+					headers: { "Content-Type": "application/json" }
+				});
+			} else {
+				alert("funciona");
+				return res;
+			}
+		};
+	});
+
 	const [tarea, setTarea] = useState("");
 	const [tareas, setTareas] = useState([]);
 	const [indice, setIndice] = useState("");
