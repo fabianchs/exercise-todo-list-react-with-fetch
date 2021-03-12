@@ -4,31 +4,38 @@ import React, { useState, useEffect } from "react";
 //hooks son funciones que se extraen
 
 export function Home() {
+	let info = "";
 	useEffect(() => {
-		let url = "https://assets.breatheco.de/apis/fake/todos/user/fabianchss";
+		let fetchUrl =
+			"https://assets.breatheco.de/apis/fake/todos/user/fabianchss";
 
-		const getAll = async () => {
-			let res = await fetch(url);
+		fetch(fetchUrl, {
+			method: "PUT",
+			headers: {
+				"Content-Type": "application/json"
+			},
+			body: JSON.stringify([
+				{ label: "Make the bed", done: false },
+				{ label: "Walk the dog", done: false },
+				{ label: "Do the replits", done: true }
+			])
+		})
+			.then(res => {
+				console.log(res.json());
+				return res.json();
+			})
+			.then(data => (info = data))
+			.catch(error => console.log("ERROR"));
+	}, []);
 
-			if (res.status == 404) {
-				res = await fetch(url, {
-					method: "POST",
-					body: [],
-					headers: { "Content-Type": "application/json" }
-				});
-			} else {
-				alert("funciona");
-				return res;
-			}
-		};
-	});
-
+	console.log();
 	const [tarea, setTarea] = useState("");
 	const [tareas, setTareas] = useState([]);
 	const [indice, setIndice] = useState("");
 
 	function handleChange(event) {
 		setTarea(event.target.value);
+		console.log(info);
 	}
 	function clic() {
 		if (tarea != "") {
