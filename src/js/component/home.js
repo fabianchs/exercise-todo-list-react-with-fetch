@@ -5,6 +5,8 @@ import React, { useState, useEffect } from "react";
 
 export function Home() {
 	let info = "";
+	let valor = "";
+
 	useEffect(() => {
 		let fetchUrl =
 			"https://assets.breatheco.de/apis/fake/todos/user/fabianchss";
@@ -17,10 +19,11 @@ export function Home() {
 			body: JSON.stringify([
 				{ label: "Make the bed", done: false },
 				{ label: "Walk the dog", done: false },
-				{ label: "Do the replits", done: true }
+				{ label: "Do the replits", done: false }
 			])
 		})
 			.then(res => {
+				console.log("hola");
 				console.log(res.json());
 				return res.json();
 			})
@@ -28,7 +31,6 @@ export function Home() {
 			.catch(error => console.log("ERROR"));
 	}, []);
 
-	console.log();
 	const [tarea, setTarea] = useState("");
 	const [tareas, setTareas] = useState([]);
 	const [indice, setIndice] = useState("");
