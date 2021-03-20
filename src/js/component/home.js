@@ -87,7 +87,7 @@ export function Home() {
 		// updateData();
 
 		const taskItems2 = tareas.map(item =>
-			api.push({ label: item, done: false }.toString())
+			api.push({ label: item, done: false })
 		);
 		updateData();
 	}
