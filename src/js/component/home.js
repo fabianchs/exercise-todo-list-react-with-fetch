@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from "react";
 
-//create your first component
-//hooks son funciones que se extraen
-
 let contador = 0;
 let text_tarea = "tareas";
 
@@ -34,12 +31,6 @@ export function Home() {
 	}, []);
 
 	function updateData() {
-		// let api = [
-		// 	{ label: "Tarea de prueba", done: false },
-		// 	{ label: "Tarea de prueba2", done: false },
-		// 	{ label: "Tarea de prueba3", done: false }
-		// ];
-
 		let fetchUrl =
 			"https://assets.breatheco.de/apis/fake/todos/user/fabianchss";
 
@@ -75,16 +66,7 @@ export function Home() {
 		recorrido();
 	}
 	function recorrido() {
-		//hola
 		api = [];
-		// let lista = tareas;
-		// for (let i = 0; i <= contador; i++) {
-		//     api.push({ label: lista[i], done: false });
-		//     console.log(lista[i] + "ciclo");
-		//     //{ label: "Do the replits", done: false }
-		// }
-		// console.log("API" + api);
-		// updateData();
 
 		const taskItems2 = tareas.map(item =>
 			api.push({ label: item, done: false })
@@ -93,11 +75,9 @@ export function Home() {
 	}
 
 	function borrar(index) {
-		//tareas.splice(index);
 		setIndice(tareas.splice(index, 1));
 		contador--;
 		recorrido();
-		//console.log("AQUI LA LISTA " + tareas);
 	}
 
 	if (contador == 1) {
